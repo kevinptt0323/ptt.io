@@ -1,0 +1,46 @@
+{
+  "name": "ptt.io",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --env=dev --progress --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinptt0323/ptt.io.git"
+  },
+  "keywords": [
+    "ptt",
+    "ptt-client",
+    "websocket",
+    "react"
+  ],
+  "author": "Kevin Lin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevinptt0323/ptt.io/issues"
+  },
+  "homepage": "https://github.com/kevinptt0323/ptt.io#readme",
+  "dependencies": {
+    "history": "^4.7.2",
+    "material-ui": "^1.0.0-beta.12",
+    "react": "^16.0.0-rc.3",
+    "react-dom": "^16.0.0-rc.3",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.6",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "webpack": "^3.6.0"
+  }
+}
