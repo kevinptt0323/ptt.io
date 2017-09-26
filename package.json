@@ -26,6 +26,7 @@
   "dependencies": {
     "history": "^4.7.2",
     "material-ui": "^1.0.0-beta.12",
+    "ptt-client": "kevinptt0323/ptt-client",
     "react": "^16.0.0-rc.3",
     "react-dom": "^16.0.0-rc.3",
     "react-redux": "^5.0.6",
@@ -38,9 +39,11 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
+    "redux-logger": "^3.0.6",
     "webpack": "^3.6.0"
   }
 }

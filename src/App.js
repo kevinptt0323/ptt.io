@@ -1,26 +1,28 @@
-import React from 'react';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
-import { createHashHistory } from 'history';
 
-import { createStore } from './store';
+import connectPTT from './actions/connect';
 
-const history = createHashHistory();
-const store = createStore(history);
+class App extends PureComponent {
+  constructor(props) {
+    super();
+  }
+  componentDidMount() {
+    this.props.connect();
+  }
+  render() {
+    return <div> { this.props.connected ? "connected" : "disconnected" } </div>;
+  }
+};
 
-const Home = () => (
-  <div>Hello, world</div>
-);
+const mapStateToProps = state => ({
+  ptt: state.connect.ptt,
+  connected: !!state.connect.ptt,
+});
 
-const App = () => (
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <div>
-        <Route exact path="/" component={Home}/>
-      </div>
-    </ConnectedRouter>
-  </Provider>
-);
+const mapDispatchToProps = dispatch => ({
+  connect: () => dispatch(connectPTT()),
+});
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

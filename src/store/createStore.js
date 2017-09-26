@@ -8,6 +8,9 @@ const initialState = {};
 
 const create = history => {
   const middlewares = [routerMiddleware(history), reduxThunk];
+  if (process.env.NODE_ENV !== 'production') {
+    middlewares.push(require('redux-logger').logger);
+  }
   return createStore(
     reducers,
     initialState,
