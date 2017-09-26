@@ -1,0 +1,29 @@
+import React, { PureComponent } from 'react';
+import { push } from 'react-router-redux'
+import login, {
+  LOGGED_IN,
+} from './actions/login';
+
+class Home extends PureComponent {
+  componentWillMount() {
+    if (!this.props.loggedin) {
+      this.
+    }
+  }
+  render() {
+    return <div>Home</div>
+  }
+};
+
+const mapStateToProps = state => ({
+  ptt: state.connect.ptt,
+  connected: !!state.connect.ptt,
+  loggedin: state.login === LOGGED_IN,
+});
+
+const mapDispatchToProps = dispatch => ({
+  login: () => dispatch(login()),
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
