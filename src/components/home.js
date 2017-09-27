@@ -15,14 +15,6 @@ const mapStateToProps = state => ({
 class Home extends PureComponent {
   constructor(props) {
     super();
-    if (!props.loggedIn) {
-      props.dispatch(push('/login'));
-    }
-  }
-  componentWillReceiveProps(nextProps) {
-    if (!nextProps.loggedIn) {
-      this.props.dispatch(push('/login'));
-    }
   }
   render() {
     return (

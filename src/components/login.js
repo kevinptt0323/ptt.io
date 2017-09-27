@@ -24,6 +24,7 @@ const FormField = withStyles(styles)(({classes, ...props}) => (
 ));
 
 const mapStateToProps = state => ({
+  location: state.routing.location,
   loggedIn: state.login === LOGGED,
   loginState: state.login,
 });
@@ -37,9 +38,15 @@ const mapDispatchToProps = dispatch => ({
 @withStyles(styles)
 class Login extends PureComponent {
   constructor(props) {
-    super();
-    if(props.loggedIn) {
-      props.dispatch(push('/'));
+    super(props);
+    const {
+      loggedIn,
+      dispatch,
+      location,
+    } = this.props;
+    if(loggedIn) {
+      const nextPage = location.state ? location.state.from : '/';
+      dispatch(push(nextPage));
     }
     this.state = {
       username: '',
@@ -60,8 +67,13 @@ class Login extends PureComponent {
     this.setState({ password: e.target.value });
   };
   componentWillReceiveProps(nextProps) {
+    const {
+      dispatch,
+      location,
+    } = this.props;
     if (nextProps.loggedIn) {
-      this.props.dispatch(push('/'));
+      const nextPage = location.state ? location.state.from : '/';
+      dispatch(push(nextPage));
     }
   }
   render() {
