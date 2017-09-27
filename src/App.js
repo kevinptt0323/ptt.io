@@ -60,9 +60,9 @@ class App extends PureComponent {
         <div style={{ width: '100%', height: '100vh', background: grey[900], overflow: 'auto' }}>
           <Switch>
             <Route       exact path='/login' component={Login} />
-            <AuthedRoute exact path='/boards' component={Home} />
-            <AuthedRoute exact path='/favorites' component={Favorite} />
-            <Redirect from='/' to='/favorites' />
+            <AuthedRoute exact path='/board' component={Home} />
+            <AuthedRoute exact path='/favorite' component={Favorite} />
+            <Redirect from='/' to='/favorite' />
           </Switch>
         </div>
       </MuiThemeProvider>
