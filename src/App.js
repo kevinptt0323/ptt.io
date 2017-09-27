@@ -2,11 +2,20 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+import grey from 'material-ui/colors/grey'
+
 import {
   Home,
   Login,
 } from './components';
 import connectPTT from './actions/connect';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+  },
+});
 
 class App extends PureComponent {
   constructor(props) {
@@ -16,10 +25,14 @@ class App extends PureComponent {
     this.props.connect();
   }
   render() {
-    return <div>
-      <Route exact path="/" component={Home}/>
-      <Route exact path="/login" component={Login}/>
-    </div>
+    return (
+      <MuiThemeProvider theme={theme}>
+        <div style={{ width: '100%', height: '100vh', background: grey[900] }}>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+        </div>
+      </MuiThemeProvider>
+    );
   }
 };
 
