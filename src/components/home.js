@@ -4,6 +4,8 @@ import { push } from 'react-router-redux'
 
 import { LOGGED } from '../actions/login';
 
+import Typography from 'material-ui/Typography'
+
 class Home extends PureComponent {
   constructor(props) {
     super();
@@ -17,12 +19,15 @@ class Home extends PureComponent {
     }
   }
   render() {
-    return <div>Home</div>
+    return (
+      <Typography type="title"> Hello, { this.props.user.username }! </Typography>
+    );
   }
 };
 
 const mapStateToProps = state => ({
   loggedin: state.login === LOGGED,
+  user: state.user,
 });
 
 export default connect(mapStateToProps)(Home);

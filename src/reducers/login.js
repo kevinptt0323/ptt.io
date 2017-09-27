@@ -1,6 +1,7 @@
 import {
   LOGIN,
   NO_LOGIN,
+  LOGGED,
 } from '../actions/login';
 const initialState = NO_LOGIN;
 

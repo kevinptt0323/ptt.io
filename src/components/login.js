@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux'
 
 import login, {
+  LOGGING,
   LOGGED,
 } from '../actions/login';
 
@@ -23,7 +24,7 @@ const FormField = withStyles(styles)(({classes, ...props}) => (
 ));
 
 const mapStateToProps = state => ({
-  loggedin: state.login === LOGGED,
+  loginState: state.login,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -36,31 +37,71 @@ const mapDispatchToProps = dispatch => ({
 class Login extends PureComponent {
   constructor(props) {
     super();
-    if (props.loggedin) {
+    if (props.loginState === LOGGED) {
       props.dispatch(push('/'));
     }
+    this.state = {
+      username: '',
+      password: '',
+    };
   }
   login = () => {
-    this.props.login('A', 'B');
+    const {
+      username,
+      password,
+    } = this.state;
+    this.props.login(username, password);
+  };
+  changeUsername = (e) => {
+    this.setState({ username: e.target.value });
+  };
+  changePassword = (e) => {
+    this.setState({ password: e.target.value });
   };
   componentWillReceiveProps(nextProps) {
-    if (nextProps.loggedin) {
+    if (nextProps.loginState === LOGGED) {
       this.props.dispatch(push('/'));
     }
   }
   render() {
+    const {
+      changeUsername,
+      changePassword,
+      login,
+    } = this;
+    const {
+      username,
+      password,
+    } = this.state;
+    const {
+      loginState,
+    } = this.props;
     return (
       <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <Paper style={{ padding: 16, width: 400, textAlign: 'center' }}>
           <Typography type="title"> Login </Typography>
           <FormField>
-            <TextField label="username" />
+            <TextField
+              label="username"
+              value={username}
+              onChange={changeUsername}
+            />
           </FormField>
           <FormField>
-            <TextField label="password" type="password" />
+            <TextField
+              label="password"
+              type="password"
+              value={password}
+              onChange={changePassword}
+            />
           </FormField>
           <FormField>
-            <Button raised color="primary" onClick={this.login}>Login</Button>
+            <Button raised color="primary"
+              onClick={login}
+              disabled={loginState === LOGGING}
+            >
+              Login
+            </Button>
           </FormField>
         </Paper>
       </div>
