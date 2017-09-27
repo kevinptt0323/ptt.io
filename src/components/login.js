@@ -15,7 +15,7 @@ import Typography from 'material-ui/Typography'
 
 const styles = theme => ({
   FormField: {
-    margin: 8,
+    margin: '8px',
   },
 });
 

@@ -57,7 +57,7 @@ class App extends PureComponent {
     } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
-        <div style={{ width: '100%', height: '100vh', background: grey[900] }}>
+        <div style={{ width: '100%', height: '100vh', background: grey[900], overflow: 'auto' }}>
           <Switch>
             <Route       exact path='/login' component={Login} />
             <AuthedRoute exact path='/boards' component={Home} />
