@@ -9,12 +9,12 @@ import Typography from 'material-ui/Typography'
 class Home extends PureComponent {
   constructor(props) {
     super();
-    if (!props.loggedin) {
+    if (!props.loggedIn) {
       props.dispatch(push('/login'));
     }
   }
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.loggedin) {
+    if (!nextProps.loggedIn) {
       this.props.dispatch(push('/login'));
     }
   }
@@ -26,7 +26,7 @@ class Home extends PureComponent {
 };
 
 const mapStateToProps = state => ({
-  loggedin: state.login === LOGGED,
+  loggedIn: state.login === LOGGED,
   user: state.user,
 });
 

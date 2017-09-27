@@ -24,6 +24,7 @@ const FormField = withStyles(styles)(({classes, ...props}) => (
 ));
 
 const mapStateToProps = state => ({
+  loggedIn: state.login === LOGGED,
   loginState: state.login,
 });
 
@@ -37,7 +38,7 @@ const mapDispatchToProps = dispatch => ({
 class Login extends PureComponent {
   constructor(props) {
     super();
-    if (props.loginState === LOGGED) {
+    if(props.loggedIn) {
       props.dispatch(push('/'));
     }
     this.state = {
@@ -59,7 +60,7 @@ class Login extends PureComponent {
     this.setState({ password: e.target.value });
   };
   componentWillReceiveProps(nextProps) {
-    if (nextProps.loginState === LOGGED) {
+    if (nextProps.loggedIn) {
       this.props.dispatch(push('/'));
     }
   }

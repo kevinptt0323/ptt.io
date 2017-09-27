@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import grey from 'material-ui/colors/grey'
@@ -10,6 +10,7 @@ import {
   Login,
 } from './components';
 import connectPTT from './actions/connect';
+import { LOGGED } from './actions/login';
 
 const theme = createMuiTheme({
   palette: {
@@ -25,11 +26,18 @@ class App extends PureComponent {
     this.props.connect();
   }
   render() {
+    const {
+      loggedIn,
+    } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
         <div style={{ width: '100%', height: '100vh', background: grey[900] }}>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" render={() => (
+            <Redirect to={ loggedIn ? "/favorites" : "/login" } />
+          )} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/boards" component={Home} />
+          <Route exact path="/favorites" component={Home} />
         </div>
       </MuiThemeProvider>
     );
@@ -39,6 +47,7 @@ class App extends PureComponent {
 const mapStateToProps = state => ({
   ptt: state.connect.ptt,
   connected: !!state.connect.ptt,
+  loggedIn: state.login === LOGGED,
   location: state.routing.location,
 });
 
