@@ -6,6 +6,12 @@ import { LOGGED } from '../actions/login';
 
 import Typography from 'material-ui/Typography'
 
+const mapStateToProps = state => ({
+  loggedIn: state.login === LOGGED,
+  user: state.user,
+});
+
+@connect(mapStateToProps)
 class Home extends PureComponent {
   constructor(props) {
     super();
@@ -25,9 +31,4 @@ class Home extends PureComponent {
   }
 };
 
-const mapStateToProps = state => ({
-  loggedIn: state.login === LOGGED,
-  user: state.user,
-});
-
-export default connect(mapStateToProps)(Home);
+export default Home;

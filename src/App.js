@@ -18,6 +18,18 @@ const theme = createMuiTheme({
   },
 });
 
+const mapStateToProps = state => ({
+  ptt: state.connect.ptt,
+  connected: !!state.connect.ptt,
+  loggedIn: state.login === LOGGED,
+  location: state.routing.location,
+});
+
+const mapDispatchToProps = dispatch => ({
+  connect: () => dispatch(connectPTT()),
+});
+
+@connect(mapStateToProps, mapDispatchToProps)
 class App extends PureComponent {
   constructor(props) {
     super();
@@ -44,15 +56,4 @@ class App extends PureComponent {
   }
 };
 
-const mapStateToProps = state => ({
-  ptt: state.connect.ptt,
-  connected: !!state.connect.ptt,
-  loggedIn: state.login === LOGGED,
-  location: state.routing.location,
-});
-
-const mapDispatchToProps = dispatch => ({
-  connect: () => dispatch(connectPTT()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
