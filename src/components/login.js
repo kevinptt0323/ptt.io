@@ -92,7 +92,7 @@ class Login extends PureComponent {
     return (
       <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <Paper style={{ padding: 16, width: 400, textAlign: 'center' }}>
-          <Typography type="title"> Login </Typography>
+          <Typography type="headline"> Login </Typography>
           <FormField>
             <TextField
               label="username"

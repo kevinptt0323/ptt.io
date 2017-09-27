@@ -18,7 +18,7 @@ class Home extends PureComponent {
   }
   render() {
     return (
-      <Typography type="title"> Hello, { this.props.user.username }! </Typography>
+      <Typography type="headline"> Hello, { this.props.user.username }! </Typography>
     );
   }
 };
