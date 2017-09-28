@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Route, Redirect, Switch } from 'react-router-dom';
+import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
 
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import grey from 'material-ui/colors/grey'
@@ -43,6 +43,7 @@ const AuthedRoute = connect(state => ({
   />
 ));
 
+@withRouter
 @connect(mapStateToProps, mapDispatchToProps)
 class App extends PureComponent {
   constructor(props) {

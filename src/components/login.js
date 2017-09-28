@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { push } from 'react-router-redux'
 
 import login, {
@@ -24,7 +25,6 @@ const FormField = withStyles(styles)(({classes, ...props}) => (
 ));
 
 const mapStateToProps = state => ({
-  location: state.routing.location,
   loggedIn: state.login === LOGGED,
   loginState: state.login,
 });
@@ -34,6 +34,7 @@ const mapDispatchToProps = dispatch => ({
   dispatch,
 });
 
+@withRouter
 @connect(mapStateToProps, mapDispatchToProps)
 @withStyles(styles)
 class Login extends PureComponent {

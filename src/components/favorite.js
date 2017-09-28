@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import BoardList from './boardList';
@@ -14,13 +15,13 @@ const styles = theme => ({
 
 const mapStateToProps = state => ({
   ptt: state.connect.ptt,
-  location: state.routing.location,
 });
 
 const mapDispatchToProps = dispatch => ({
   connect: () => dispatch(connectPTT()),
 });
 
+@withRouter
 @connect(mapStateToProps, mapDispatchToProps)
 @withStyles(styles)
 class Favorite extends PureComponent {
