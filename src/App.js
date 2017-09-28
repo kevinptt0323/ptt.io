@@ -6,7 +6,7 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import grey from 'material-ui/colors/grey'
 
 import {
-  Home,
+  Board,
   Login,
   Favorite,
 } from './components';
@@ -59,8 +59,8 @@ class App extends PureComponent {
       <MuiThemeProvider theme={theme}>
         <div style={{ width: '100%', height: '100vh', background: grey[900], overflow: 'auto' }}>
           <Switch>
-            <Route       exact path='/login' component={Login} />
-            <AuthedRoute exact path='/board' component={Home} />
+            <Route exact path='/login' component={Login} />
+            <AuthedRoute exact path='/board/:boardname' component={Board} />
             <AuthedRoute exact path='/favorite' component={Favorite} />
             <Redirect from='/' to='/favorite' />
           </Switch>

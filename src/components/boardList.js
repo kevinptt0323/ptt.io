@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import { Link } from 'react-router-dom';
 
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
@@ -6,6 +7,9 @@ import Paper from 'material-ui/Paper'
 import Typography from 'material-ui/Typography'
 
 const styles = theme => ({
+  TileLink: {
+    textDecoration: 'none',
+  },
   TileComponent: {
     boxSizing: 'border-box',
     padding: '16px',
@@ -16,10 +20,13 @@ const styles = theme => ({
 
 const TileComponent = withStyles(styles)(({
   classes,
+  to,
   ...props
 }) => (
   <Grid item xs={12} sm={6} md={3}>
-    <Paper {...props} className={ classes.TileComponent }/>
+    <Link to={to} className={ classes.TileLink }>
+      <Paper {...props} className={ classes.TileComponent } />
+    </Link>
   </Grid>
 ));
 
@@ -33,6 +40,7 @@ class BoardList extends PureComponent {
       <Grid container spacing={24}>
         {
           boards.map(({
+            bn,
             admin,
             boardname,
             category,
@@ -42,7 +50,7 @@ class BoardList extends PureComponent {
             divider,
             folder,
           }) => (
-            <TileComponent key={boardname}>
+            <TileComponent key={`${bn}-${boardname}`} to={`/board/${boardname}`}>
               <Typography type="title">{ !folder ? boardname : title }</Typography>
               <Typography type="body1">{ !folder ? title : null }</Typography>
             </TileComponent>
