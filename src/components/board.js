@@ -35,7 +35,6 @@ class Board extends PureComponent {
       ptt,
       match: { params: { boardname } },
     } = this.props;
-    console.log(ptt);
     const articles = await ptt.getArticles(boardname);
     this.setState({ articles });
   }

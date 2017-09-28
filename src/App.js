@@ -6,9 +6,10 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import grey from 'material-ui/colors/grey'
 
 import {
-  Board,
   Login,
   Favorite,
+  Board,
+  Article,
 } from './components';
 import connectPTT from './actions/connect';
 import { LOGGED } from './actions/login';
@@ -65,6 +66,7 @@ class App extends PureComponent {
           <Switch>
             <Route exact path='/login' component={Login} />
             <AuthedRoute exact path='/board/:boardname' component={Board} />
+            <AuthedRoute exact path='/board/:boardname/:sn' component={Article} />
             <AuthedRoute exact path='/favorite' component={Favorite} />
             <Redirect from='/' to='/favorite' />
           </Switch>
