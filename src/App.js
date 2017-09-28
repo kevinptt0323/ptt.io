@@ -27,7 +27,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  connect: () => dispatch(connectPTT()),
+  connect: (...args) => dispatch(connectPTT(...args)),
 });
 
 const AuthedRoute = connect(state => ({
@@ -50,7 +50,10 @@ class App extends PureComponent {
     super();
   }
   componentDidMount() {
-    this.props.connect();
+    this.props.connect({
+      url: 'wss://ptt.kevinptt.me/ptt',
+      origin: '',
+    });
   }
   render() {
     const {
