@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const config = {
   devtool: 'cheap-module-source-map',
@@ -18,7 +19,13 @@ const config = {
         loader: 'babel-loader',
       }
     ]
-  }
+  },
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: 'report.html',
+    }),
+  ],
 };
 
 module.exports = config;
