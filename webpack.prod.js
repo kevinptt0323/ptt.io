@@ -2,9 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 
 const config = {
-  devtool: 'cheap-module-source-map',
   profile: true,
-  watch: true,
   entry: path.resolve(__dirname, 'src/index.js'),
   output: {
     path: path.resolve(__dirname, 'build'),
@@ -18,7 +16,14 @@ const config = {
         loader: 'babel-loader',
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
+    new webpack.optimize.UglifyJsPlugin(),
+  ],
 };
 
 module.exports = config;
+
