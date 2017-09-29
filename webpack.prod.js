@@ -12,7 +12,7 @@ const config = {
     loaders: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules\/(?![ws])/,
+        include: path.resolve(__dirname, 'src'),
         loader: 'babel-loader',
       }
     ]
