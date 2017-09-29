@@ -14,6 +14,7 @@ const styles = theme => ({
   },
   paper: {
     padding: '16px',
+    overflow: 'auto',
   },
   link: {
     color: 'inherit',
@@ -27,8 +28,12 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 });
 
-const MyLink = withStyles(styles)(({ classes, ...props }) => (
-  <a className={classes.link} {...props} />
+const MyLink = withStyles(styles)(({ classes, className = '', ...props }) => (
+  <a
+    className={`${className} ${classes.link}`}
+    target='_blank'
+    {...props}
+  />
 ));
 
 @withRouter
