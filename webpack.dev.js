@@ -15,7 +15,10 @@ const config = {
     loaders: [
       {
         test: /\.(js|jsx)$/,
-        include: path.resolve(__dirname, 'src'),
+        include: [
+          /src/,
+          /node_modules\/uao\-js/,
+        ],
         loader: 'babel-loader',
       }
     ]
