@@ -38,6 +38,16 @@ class Board extends PureComponent {
     const articles = await ptt.getArticles(boardname);
     this.setState({ articles });
   }
+  loadMore = async () => {
+    const {
+      ptt,
+      match: { params: { boardname } },
+    } = this.props;
+    const articles = [...this.state.articles];
+    const oldArticles = await ptt.getArticles(boardname, articles[articles.length-1].sn-1);
+    articles.push(...oldArticles);
+    this.setState({ articles });
+  };
   render() {
     const {
       match: { params: { boardname } },
@@ -49,7 +59,7 @@ class Board extends PureComponent {
     return (
       <div className={ classes.root }>
         <Typography type='headline'> { boardname } </Typography>
-        <ArticleList boardname={boardname} articles={articles} />
+        <ArticleList boardname={boardname} articles={articles} loadMore={this.loadMore} />
       </div>
     );
   }

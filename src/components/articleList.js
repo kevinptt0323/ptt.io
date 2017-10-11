@@ -19,14 +19,28 @@ const styles = theme => ({
 });
 
 const TileComponent = withStyles(styles)(({
+  key,
   classes,
   to,
   ...props
 }) => (
-  <Grid item xs={12} md={6}>
+  <Grid item xs={12} md={6} key={key}>
     <Link to={to} className={ classes.TileLink }>
       <Paper {...props} className={ classes.TileComponent } />
     </Link>
+  </Grid>
+));
+
+const TileMore = withStyles(styles)(({
+  key,
+  classes,
+  onClick,
+  ...props
+}) => (
+  <Grid item xs={12} key={key}>
+    <a onClick={onClick} className={ classes.TileLink }>
+      <Paper {...props} className={ classes.TileComponent } />
+    </a>
   </Grid>
 ));
 
@@ -36,6 +50,7 @@ class ArticleList extends PureComponent {
     const {
       boardname,
       articles,
+      loadMore,
     } = this.props;
     return (
       <Grid container spacing={24}>
@@ -55,6 +70,9 @@ class ArticleList extends PureComponent {
             </TileComponent>
           ))
         }
+        <TileMore key={`${boardname}-more`} onClick={loadMore}>
+          <Typography type="title">更多</Typography>
+        </TileMore>
       </Grid>
     );
   }
