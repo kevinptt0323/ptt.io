@@ -18,6 +18,12 @@ const theme = createMuiTheme({
   palette: {
     type: 'dark',
   },
+  typography: {
+    body2: {
+      fontFamily: `'Noto Sans Mono CJK TC', 'SimHei', monospace`,
+      fontWeight: 300,
+    },
+  },
 });
 
 const mapStateToProps = state => ({

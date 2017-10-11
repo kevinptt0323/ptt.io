@@ -52,6 +52,7 @@ class Article extends PureComponent {
       match: { params: { boardname, sn } },
     } = this.props;
     const article = await ptt.getArticle(boardname, sn);
+    article.lines = article.lines.map(line => line.replace(/ /g, '\u00a0'));
     this.setState({ article });
   }
   render() {
@@ -66,7 +67,7 @@ class Article extends PureComponent {
         <Paper className={classes.paper}>
           <Linkify component={MyLink}>
             { article.lines.map(line => (
-              <Typography type="body1">
+              <Typography type="body2">
                 {line}
               </Typography>
             ))}

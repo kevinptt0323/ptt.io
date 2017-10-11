@@ -51,9 +51,10 @@ class ArticleList extends PureComponent {
       boardname,
       articles,
       loadMore,
+      style,
     } = this.props;
     return (
-      <Grid container spacing={24}>
+      <Grid container spacing={24} style={style}>
         {
           articles.map(({
             sn,
