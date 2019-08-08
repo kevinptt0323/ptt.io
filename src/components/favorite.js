@@ -30,9 +30,24 @@ class Favorite extends PureComponent {
     this.state = { favorites: [] };
   }
   async componentDidMount() {
-    const { ptt } = this.props;
-    const favorites = await ptt.getFavorite();
+    const {
+      ptt,
+      match: { params: { index } },
+    } = this.props;
+    const indexArr = index ? index.split('/').map(i => i|0) : [];
+    const favorites = await ptt.getFavorite(indexArr);
     this.setState({ favorites });
+  }
+  async componentDidUpdate(prevProps) {
+    const {
+      ptt,
+      match: { params: { index } },
+    } = this.props;
+    if (index !== prevProps.match.params.index) {
+      const indexArr = index ? index.split('/').map(i => i|0) : [];
+      const favorites = await ptt.getFavorite(indexArr);
+      this.setState({ favorites });
+    }
   }
   render() {
     const {

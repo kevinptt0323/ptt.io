@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -30,11 +30,12 @@ const TileComponent = withStyles(styles)(({
   </Grid>
 ));
 
-
+@withRouter
 class BoardList extends PureComponent {
   render() {
     const {
-      boards
+      boards,
+      match,
     } = this.props;
     return (
       <Grid container spacing={24}>
@@ -50,7 +51,7 @@ class BoardList extends PureComponent {
             divider,
             folder,
           }) => (
-            <TileComponent key={`${bn}-${boardname}`} to={`/board/${boardname}`}>
+            <TileComponent key={`${bn}-${boardname}`} to={!folder ? `/board/${boardname}` : `${match.url}/${bn}`}>
               <Typography type="title">{ !folder ? boardname : title }</Typography>
               <Typography type="body1">{ !folder ? title : null }</Typography>
             </TileComponent>

@@ -73,7 +73,7 @@ class App extends PureComponent {
             <Route exact path='/login' component={Login} />
             <AuthedRoute exact path='/board/:boardname' component={Board} />
             <AuthedRoute exact path='/board/:boardname/:sn' component={Article} />
-            <AuthedRoute exact path='/favorite' component={Favorite} />
+            <AuthedRoute path='/favorite/:index*' component={Favorite} />
             <Redirect from='/' to='/favorite' />
           </Switch>
         </div>
