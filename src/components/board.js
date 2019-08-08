@@ -59,7 +59,17 @@ class Board extends PureComponent {
     return (
       <div className={ classes.root }>
         <Typography type='headline'> { boardname } </Typography>
-        <ArticleList boardname={boardname} articles={articles} loadMore={this.loadMore} />
+        <Typography type='subheading'
+          component={(props) => <Link to='/favorite' {...props} />
+        }>
+          返回
+        </Typography>
+        <ArticleList
+          boardname={boardname}
+          articles={articles}
+          loadMore={this.loadMore}
+          style={{ marginTop: 0 }}
+        />
       </div>
     );
   }
