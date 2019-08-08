@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Linkify from 'react-linkify';
 
-import { withStyles } from 'material-ui/styles';
-import Grid from 'material-ui/Grid';
-import Paper from 'material-ui/Paper'
-import Typography from 'material-ui/Typography'
+import { withStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
   root: {
@@ -67,7 +67,7 @@ class Article extends PureComponent {
         <Paper className={classes.paper}>
           <Linkify component={MyLink}>
             { article.lines.map(line => (
-              <Typography type="body2">
+              <Typography variant="body2">
                 {line}
               </Typography>
             ))}

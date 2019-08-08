@@ -1,17 +1,12 @@
 {
 	"presets" : [
-		"env",
-		"react",
-		"stage-1"
+		"@babel/env",
+		"@babel/react"
 	],
 	"plugins": [
-		"transform-decorators-legacy",
-		[
-			"transform-runtime",
-			{
-				"polyfill": false,
-				"regenerator": true
-			}
-		]
+		[ "@babel/plugin-proposal-decorators", { "legacy": true } ],
+		[ "@babel/plugin-proposal-class-properties", { "loose": false } ],
+		[ "@babel/plugin-proposal-export-default-from" ],
+		[ "@babel/plugin-transform-runtime", { "regenerator": true } ]
 	]
 }

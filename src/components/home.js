@@ -4,7 +4,7 @@ import { push } from 'react-router-redux'
 
 import { LOGGED } from '../actions/login';
 
-import Typography from 'material-ui/Typography'
+import Typography from '@material-ui/core/Typography'
 
 const mapStateToProps = state => ({
   loggedIn: state.login === LOGGED,

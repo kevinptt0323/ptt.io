@@ -2,8 +2,8 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
 
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-import grey from 'material-ui/colors/grey'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import grey from '@material-ui/core/colors/grey'
 
 import {
   Login,

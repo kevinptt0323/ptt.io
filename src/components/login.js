@@ -8,11 +8,11 @@ import login, {
   LOGGED,
 } from '../actions/login';
 
-import { withStyles } from 'material-ui/styles';
-import Button from 'material-ui/Button';
-import Paper from 'material-ui/Paper';
-import TextField from 'material-ui/TextField';
-import Typography from 'material-ui/Typography'
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
   FormField: {
@@ -110,7 +110,7 @@ class Login extends PureComponent {
             />
           </FormField>
           <FormField>
-            <Button raised color="primary"
+            <Button variant="contained" color="primary"
               onClick={login}
               disabled={loginState === LOGGING}
             >
